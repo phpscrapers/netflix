@@ -52,8 +52,12 @@ final class NetflixScraperTest extends TestCase
      */
     public function test_titles_can_be_parsed_from_page()
     {
-        if (empty(getenv('NF_USERNAME'))) throw new \Exception('No username to get() test with.');
-        if (empty(getenv('NF_PASSWORD'))) throw new \Exception('No password to get() test with.');
+        if (empty(getenv('NF_USERNAME'))) {
+            throw new \Exception('No username to get() test with.');
+        }
+        if (empty(getenv('NF_PASSWORD'))) {
+            throw new \Exception('No password to get() test with.');
+        }
 
         $scraper = new NetflixScraper();
         $scraper->setLogin(getenv('NF_USERNAME'), getenv('NF_PASSWORD'));
