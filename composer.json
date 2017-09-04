@@ -12,7 +12,8 @@
         }
     ],
     "require": {
-        "phpscrapers/interfaces": "^0.0.1"
+        "phpscrapers/interfaces": "^0.0.1",
+        "fabpot/goutte": "^3.2"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",
@@ -29,6 +30,6 @@
         }
     },
     "scripts": {
-        "test": "vendor/bin/phpunit --colors=always"
+        "test": "vendor/bin/phpunit --group standard --colors=always"
     }
 }

@@ -12,6 +12,7 @@
 
 namespace PhpScrapers\Scrapers;
 
+use Goutte\Client;
 use PhpScrapers\Interfaces\ScraperInterface;
 
 /**
@@ -57,11 +58,40 @@ class NetflixScraper implements ScraperInterface
         $this->password = $password;
     }
 
+
     /**
      * @return array
      */
     public function get() : array
     {
+        $url = "https://www.netflix.com/Login?nextpage=https%3A%2F%2Fwww.netflix.com%2Fviewingactivity";
+        $client = new Client();
+        $crawler = $client->request('GET', $url);
+        $form = $crawler->selectButton('Sign In')->form();
+        $crawler = $client->submit($form, array('email' => $this->username, 'password' => $this->password));
+        $this->raw = $crawler->html();
+        $crawler->filter('.retableRow')->each(function ($node) {
+            // .date .title data-reactid
+            $date   = $node->filter(".date")->text();
+            $title  = $node->filter(".title")->text();
+            $id     = str_replace("/title/", "", $node->filter(".title > a")->attr("href"));
+            $this->data["id_".$id] = [
+                "date"  => $date,
+                "title" => $title
+            ];
+        });
+
+        if (empty($this->raw)) {
+            $this->message = "Unable to fetch data from the Netflix page";
+        } else {
+            $this->message = "Fetch HTML from Netflix page successfully";
+        }
+
+        if ($this->data === null) {
+            $this->data = [];
+        }
+
+        return $this->data;
     }
 
     /**
