@@ -1,8 +1,14 @@
 ![Circle CI](https://circleci.com/gh/phpscrapers/netflix.png?style=shield " ") 
 ![StyleCI](https://styleci.io/repos/102385804/shield " ")
 
-# php-netflix
-Unofficial API crawler to get Netflix viewing history.
+## php-netflix
+
+This is an unofficial crawler that can retrieve the Netflix viewing history 
+for the given username/password. You should note that you can't request and 
+call this too often otherwise you'll lock your Netflix account for a short 
+period as they think you're trying to register more devices than your plan 
+allows.
+
 
 ### License
 
