@@ -70,16 +70,18 @@ class NetflixScraper implements ScraperInterface
         $form = $crawler->selectButton('Sign In')->form();
         $crawler = $client->submit($form, array('email' => $this->username, 'password' => $this->password));
         $this->raw = $crawler->html();
-        $crawler->filter('.retableRow')->each(function ($node) {
-            // .date .title data-reactid
-            $date   = $node->filter(".date")->text();
-            $title  = $node->filter(".title")->text();
-            $id     = str_replace("/title/", "", $node->filter(".title > a")->attr("href"));
-            $this->data["id_".$id] = [
+        $crawler->filter('.retableRow')->each(
+            function ($node) {
+                // .date .title data-reactid
+                $date   = $node->filter(".date")->text();
+                $title  = $node->filter(".title")->text();
+                $id     = str_replace("/title/", "", $node->filter(".title > a")->attr("href"));
+                $this->data["id_".$id] = [
                 "date"  => $date,
                 "title" => $title
-            ];
-        });
+                ];
+            }
+        );
 
         if (empty($this->raw)) {
             $this->message = "Unable to fetch data from the Netflix page";

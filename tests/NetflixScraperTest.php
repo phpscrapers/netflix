@@ -27,7 +27,7 @@ final class NetflixScraperTest extends TestCase
     /**
      * @group standard
      */
-    public function test_it_can_be_instantiated()
+    public function testItCanBeInstantiated()
     {
         $scraper = new NetflixScraper();
         $this->assertNotNull($scraper);
@@ -36,7 +36,7 @@ final class NetflixScraperTest extends TestCase
     /**
      * @group standard
      */
-    public function test_username_and_password_get_set()
+    public function testUsernameAndPasswordGetSet()
     {
         $scraper = new NetflixScraper();
         $scraper->setLogin('username', 'password');
@@ -50,10 +50,14 @@ final class NetflixScraperTest extends TestCase
      * This test in particular needs to be made less brittle but Goutte has issues
      * reading from local files and not remote so I can't move that out just yet.
      */
-    public function test_titles_can_be_parsed_from_page()
+    public function testTitlesCanBeParsedFromNetflix()
     {
-        if (empty(getenv('NF_USERNAME'))) throw new \Exception('No username to get() test with.');
-        if (empty(getenv('NF_PASSWORD'))) throw new \Exception('No password to get() test with.');
+        if (empty(getenv('NF_USERNAME'))) {
+            throw new \Exception('No username to get() test with.');
+        }
+        if (empty(getenv('NF_PASSWORD'))) {
+            throw new \Exception('No password to get() test with.');
+        }
 
         $scraper = new NetflixScraper();
         $scraper->setLogin(getenv('NF_USERNAME'), getenv('NF_PASSWORD'));
