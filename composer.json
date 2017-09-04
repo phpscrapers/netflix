@@ -1,0 +1,34 @@
+{
+    "name": "phpscrapers/netflix",
+    "description": "Unofficial API crawler to get Netflix viewing history.",
+    "license": "Apache-2.0",
+    "homepage": "https://github.com/phpscrapers/php-netflix",
+    "authors": [
+        {
+            "name": "Scott Wilcox",
+            "email": "scott@dor.ky",
+            "homepage": "https://github.com/ssx",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "phpscrapers/interfaces": "^0.0.1"
+    },
+    "require-dev": {
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpScrapers\\Scrapers\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit --colors=always"
+    }
+}
