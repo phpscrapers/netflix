@@ -1,19 +1,26 @@
 <?php
 
+/*
+ * This file is part of phpscrapers/netflix
+ *
+ *  (c) Scott Wilcox <scott@dor.ky>
+ *
+ *  For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ */
+
 namespace Tests;
 
+use PhpScrapers\Scrapers\NetflixScraper;
 use PHPUnit\Framework\Assert;
 use PHPUnit\Framework\TestCase;
-use PhpScrapers\Scrapers\NetflixScraper;
 
 /**
- * Class NetflixScraperTest
- *
- * @package Tests
+ * Class NetflixScraperTest.
  */
 final class NetflixScraperTest extends TestCase
 {
-
     /**
      * @test
      */
@@ -33,5 +40,4 @@ final class NetflixScraperTest extends TestCase
         Assert::assertAttributeEquals('username', 'username', $scraper);
         Assert::assertAttributeEquals('password', 'password', $scraper);
     }
-
 }

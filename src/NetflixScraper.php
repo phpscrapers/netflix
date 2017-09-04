@@ -1,16 +1,24 @@
 <?php
+
+/*
+ * This file is part of phpscrapers/netflix
+ *
+ *  (c) Scott Wilcox <scott@dor.ky>
+ *
+ *  For the full copyright and license information, please view the LICENSE
+ *  file that was distributed with this source code.
+ *
+ */
+
 namespace PhpScrapers\Scrapers;
 
 use PhpScrapers\Interfaces\ScraperInterface;
 
 /**
- * Class NetflixScraper
- *
- * @package PhpScrapers\Scrapers
+ * Class NetflixScraper.
  */
 class NetflixScraper implements ScraperInterface
 {
-
     /**
      * @var
      */
@@ -51,7 +59,6 @@ class NetflixScraper implements ScraperInterface
      */
     public function get() : array
     {
-
     }
 
     /**
@@ -62,13 +69,12 @@ class NetflixScraper implements ScraperInterface
         return $this->message;
     }
 
-
     /**
      * @return string
      */
     public function getRaw() : string
     {
-        return (string)$this->data;
+        return (string) $this->data;
     }
 
     /**
@@ -76,7 +82,7 @@ class NetflixScraper implements ScraperInterface
      */
     public function isSuccessful() : bool
     {
-        return (count($this->data) === 0);
+        return count($this->data) === 0;
     }
 
     /**
@@ -84,6 +90,6 @@ class NetflixScraper implements ScraperInterface
      */
     public function isFailure() : bool
     {
-        return (count($this->data) > 0);
+        return count($this->data) > 0;
     }
 }
